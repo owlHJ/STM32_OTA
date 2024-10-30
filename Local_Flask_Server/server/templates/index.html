@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STM32 OTA System</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 2rem;
+            margin: 10px 0 40px 0;
+            text-align: center;
+        }
+        .upload-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        input[type="file"] {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+        }
+        .file-info {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>STM32 OTA System</h1>
+    <h2>by hjkim</h2>
+    <div class="upload-container">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit">Upload File</button>
+        </form>
+    </div>
+    {% if filename %}
+    <div class="file-info">
+        <p>Uploaded File: <strong>{{ filename }}</strong></p>
+        <p><a href="/download/{{ filename }}">Download {{ filename }}</a></p>
+    </div>
+    {% endif %}
+</body>
+</html>
